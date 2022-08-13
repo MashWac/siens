@@ -19,6 +19,9 @@ class CategoryController extends Controller
         return view('admin.category.add',compact('data'));
     }
     public function insert(Request $request){
+        $request->validate([            
+            'catename' => ['required', 'string', 'max:255'],
+        ]);
         $category= new Category;
         $category->category_name=$request->input('catename');
         $category->save();
@@ -31,6 +34,9 @@ class CategoryController extends Controller
         return view('admin.category.add',compact('data'));
     }
     public function update(Request $request,$id){
+        $request->validate([            
+            'catename' => ['required', 'string', 'max:255'],
+        ]);
         $category= Category::find($id);
         $category->category_name=$request->input('catename');
         $category->update();

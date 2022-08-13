@@ -38,11 +38,32 @@
     font-family: 'Oxygen', sans-serif;
     font-size: 14px;
     text-decoration: none;
-    color:black
+    color:black;
+    text-transform:uppercase;
+    justify-content: center !important;
 }
 .navlinks:hover{
     color: rgb(190, 179, 18);
    
+}
+#cartdetails{
+  color: rgb(190, 179, 18);
+  text-decoration: none;
+  font-style: normal;
+}
+#cartdetails:hover{
+
+  color: rgb(202, 198, 198);
+}
+#cartCount{
+  text-align: center;
+  padding: 0 0.9rem 0.1rem 0.9rem;
+  border-radius: 3rem;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: white;
+  font-style: normal;
+  color: black;
 }
 #mainbody{
     width:100%
@@ -93,7 +114,7 @@
 }
 #productshome{
     display:grid;
-    justify-content: center;
+    width: 95%;
 }
 #cartpage{
   margin-left: 8%;
@@ -417,6 +438,7 @@
         -o-transition: none;
         transition: none; } }
   
+  
   /* Show the checkmark when checked */
   .checkbox-wrap input:checked ~ .checkmark:after {
     display: block;
@@ -429,5 +451,22 @@
     color: #3690d9; }
     .checkbox-primary input:checked ~ .checkmark:after {
       color: #3690d9; }
+    .pricetext{
+      color: rgb(128, 128, 128);
+        /* font-family: 'Abril Fatface', cursive; */
+  /* font-family: 'Acme', sans-serif; */
+  /* font-family: 'Goldman', cursive; */
+  font-family: 'Kanit', sans-serif;
+  /* font-family: 'Lobster', cursive;
+  font-family: 'Merriweather', serif;
+  font-family: 'Patua One', cursive;
+  font-family: 'Prompt', sans-serif;
+  font-family: 'Righteous', cursive;
+  font-family: 'Roboto Slab', serif;
+  font-family: 'Russo One', sans-serif;
+  font-family: 'Secular One', sans-serif;
+  font-family: 'Varela Round', sans-serif;
+  font-family: 'Vollkorn', serif; */
+    }
 
   

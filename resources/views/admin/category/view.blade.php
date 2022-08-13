@@ -5,6 +5,14 @@
         <div class="card-header">
             <h2> View Category</h2>
         </div>
+        <div class="card-body">
+            <h5>Create A New Product</h5>
+            <div class="col-md-6">
+                <a href="{{url('add-Product')}}">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </a>
+            </div>
+        </div>
 
     </div>
     <div class="card">

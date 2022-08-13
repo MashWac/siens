@@ -17,33 +17,32 @@
 
 
             <div class="card-body">
-                <div class="row gy-3">
-                    @foreach($products as $item)
+                <div class="row gy-3 "> 
+                    @foreach($data['products'] as $item)
                         <div class="col">
-                            <div class="card productsprofile h-100 " style="width: 15rem; " >
-                                <input type="text" id="eventflyer" value="asset('/assets/uploads/events/'.$item->product_image)" hidden >
+                            <div class="card productsprofile h-100 " style="width: 18rem; " >
                                 <img src="{{asset('/assets/uploads/products/'.$item->product_image) }}"  class="card-img-top" height="300px"alt="...">
                                 <div class="card-body details" style="position: relative; height: 150px; ">
-                                    <!-- <input type="text" id="eventnames" value="{{$item->event_name}}" hidden >
-                                    <input type="text" id="eventlocation" value="{{$item->location}}" hidden >
-                                    <input type="text" id="eventtime" value=" {{$item->event_date}}" hidden>
-                                    <input type="text" id="eventdescription" value=" {{$item->event_description}}" hidden>
-                                    <input type="text" id="organiser" value=" {{$item->name}}" hidden>
-                                    <input type="text" id="eventflyer" value="assets/uploads/events/{{$item->event_flyer}}" hidden> -->
 
                                     <h5 class="card-title">{{$item->product_name}}</h5>
                                     
                                     <div class="d-grid gap-2 d-md-block" style="position: absolute; bottom: 10%; height: 150px;">
-                                        <h6 style="margin-top: 30%;">{{$item->unit_price}} KSH<h6>
-                                        <a href="#" class="btn btn-primary">Add To Cart</a>
-                                        <a href="#" class="btn btn-warning "id="btnpurch" style="color:white;"> Purchase</a>
+                                        <h6 class="text-center pricetext"style="margin-top: 30%;">{{$item->unit_price}} KSH<h6>
+                                        <a href="{{url('viewproduct/'.$item->product_id)}}" class="btn btn-warning "id="btnpurch" style="color:white;"> View Product</a>
+                                        <a href="{{url('addtocart/'.$item->product_id)}}" class="btn btn-primary">Add To Cart</a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+                        
                         @endforeach
                 </div>
+
             </div>
 
+        </div>
+        <div class="text-center d-flex justify-content-center">
+                {{ $data['products']->links() }}
         </div>
 @endsection  

@@ -68,25 +68,35 @@ class Registration extends Controller
 
             if (Hash::check($password,$data_user['password'])) {
 
-                $sessionData = [
-                    'user_id' => $data_user['id'],
-                    'email' => $data_user['email'],
-                    'firstname'  => $data_user['firstname'],
-                    'surname'  => $data_user['surname'],
-                    'country'  => $data_user['country'],
-                    'phone'  => $data_user['telephone'],
-                    'role'  => $data_user['role_as'],
-                    'logged' => TRUE,
-                     'purchase'=>false
-
-                ];
-                session($sessionData);
-
                 if($data_user['role_as']==1){
+                    $sessionData = [
+                        'user_id' => $data_user['id'],
+                        'email' => $data_user['email'],
+                        'firstname'  => $data_user['firstname'],
+                        'surname'  => $data_user['surname'],
+                        'role'  => $data_user['role_as'],
+                        'logged' => TRUE,
+    
+                    ];
+                    session($sessionData);
+
                     return redirect('/dashboard')->with('status','Logged In Successfully.');
 
 
                 }else{
+                    $sessionData = [
+                        'user_id' => $data_user['id'],
+                        'email' => $data_user['email'],
+                        'firstname'  => $data_user['firstname'],
+                        'surname'  => $data_user['surname'],
+                        'country'  => $data_user['country'],
+                        'phone'  => $data_user['telephone'],
+                        'role'  => $data_user['role_as'],
+                        'logged' => TRUE,
+                        'purchase'=>false
+    
+                    ];
+                    session($sessionData);
                     return redirect('home')->with('status','Logged In Successfully.');
                 }
                

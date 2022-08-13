@@ -41,13 +41,18 @@
 
 
     <!--- Scripts-->
+    <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}" defer></script>
+    <!-- <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script> -->
+
+    <script src="{{ asset('frontend/js/paycalc.js') }}" defer></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    
     @if(session('status'))
     <script>
         swal("{{session('status')}}")
     </script>
     @endif
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     @include('layouts.footer')
 
 </body>

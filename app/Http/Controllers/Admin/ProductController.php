@@ -21,6 +21,14 @@ class ProductController extends Controller
         return view('admin.product.add',compact('data'));
     }
     public function insert(Request $request){
+        $request->validate([            
+            'prodname' => ['required', 'string', 'max:255'],
+            'proddescr' => ['required', 'string', 'max:255'],
+            'prodprice' => ['required','min:0','gt:0' ],
+            'prodquan' => ['required','min:0','gt:0'],
+            'prodcate'=>['exists:App\Models\Category,category_id'],
+            'prodimage'=>['required','image']
+        ]);
         $category= new Category;
         $product=new Product();
         if($request->hasFile('prodimage')){
@@ -34,7 +42,7 @@ class ProductController extends Controller
         $product->product_description=$request->input('proddescr');
         $product->category=$request->input('prodcate');
         $product->unit_price=$request->input('prodprice');
-        $product->available_stock=$request->input('prodquan');
+        $product->stock_available=$request->input('prodquan');
 
         $product->save();
         return redirect('products')->with('status','Product Added Successfully.');
@@ -47,6 +55,13 @@ class ProductController extends Controller
         return view('admin.product.add',compact('data'));
     }
     public function update(Request $request,$id){
+        $request->validate([            
+            'prodname' => ['required', 'string', 'max:255'],
+            'proddescr' => ['required', 'string', 'max:255'],
+            'prodprice' => ['required','min:0','gt:0' ],
+            'prodquan' => ['required','min:0','gt:0'],
+            'prodcate'=>['exists:App\Models\Category,category_id'],
+        ]);
         $product=Product::find($id);
         if($request->hasFile('prodimage')){
             $path='assets/uploads/products/'.$product->product_image;
@@ -63,7 +78,7 @@ class ProductController extends Controller
         $product->product_description=$request->input('proddescr');
         $product->category=$request->input('prodcate');
         $product->unit_price=$request->input('prodprice');
-        $product->available_stock=$request->input('prodquan');
+        $product->stock_available=$request->input('prodquan');
 
         $product->update();
         return redirect('products')->with('status','Product Updated Successfully.');

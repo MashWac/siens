@@ -12,33 +12,60 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="prodname">Product Name:</label>
-                        <input type="text" class="form-control" name="prodname">
+                        
+                        <input id="prodname" type="text" class="form-control @error('prodname') is-invalid @enderror" name="prodname" value="{{ old('prodname')}}" autocomplete="prodname" autofocus>
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodname')<strong>{{ $message }}</strong>@enderror
+                        </span>
                     </div>
                     <div class="col-md-12">
                         <label for="proddescr">Product Description:</label>
-                        <textarea class="form-control" name="proddescr" id="descript"> </textarea>
+                        <textarea class="form-control @error('proddescr') is-invalid @enderror" name="proddescr" id="descript"autocomplete="proddescr" autofocus> {{ old('proddescr')}}</textarea>
+                        <span class="invalid-feedback" role="alert">
+                        @error('proddescr')<strong>{{ $message }}</strong>@enderror
+                        </span>
                     </div>
                     <div class="col-md-6">
-                        <label for="prodname">Category:</label>
-                        <input type="text" class="form-control"name="prodcate" id="product-category" list="categoryselect">
+                        <label for="prodcate">Category:</label>
+                        <input type="text" class="form-control @error('prodcate') is-invalid @enderror" name="prodcate" id="product-category" list="categoryselect" value="{{ old('prodcate')}}">
                                 <datalist id="categoryselect">
-                                    @foreach($data['category'] as $item):?>
+                                    @foreach($data['category'] as $item)
                                     <option value="<?=$item['category_id']?>"><?="category-".$item['category_name']?><option>
                                     @endforeach
                                 </datalist>
+                                <span class="invalid-feedback" role="alert">
+                                    @error('prodcate')
+                                        <strong>{{ $message }}</strong>
+                                        @enderror
+                                </span>   
                     </div>
                     <div class="col-md-6">
                         <label for="prodprice">Unit Price:</label>
-                        <input type="number" class="form-control" name="prodprice">
+                        <input type="number" class="form-control @error('prodprice') is-invalid @enderror" name="prodprice" value="{{ old('prodprice')}}">
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodprice')
+                            <strong>{{ $message }}</strong>
+                            @enderror
+                        </span>   
                     </div>
                     <div class="col-md-6">
                         <label for="prodquan">Product Quantity:</label>
-                        <input type="number" class="form-control" name="prodquan">
+                        <input type="number" class="form-control @error('prodquan') is-invalid @enderror" name="prodquan" value="{{ old('prodquan')}}">
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodquan')
+                            <strong>{{ $message }}</strong>
+                            @enderror
+                        </span>  
                     </div>
 
                     <div class="col-md-12">
                         <label for="prodimage">Product Image:</label>
-                        <input type="file" id="img"  name="prodimage">
+                        <input type="file" class="form-control @error('prodimage') is-invalid @enderror" id="img"  name="prodimage">
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodimage')
+                            <strong>{{ $message }}</strong>
+                            @enderror
+                        </span>  
                     </div>
                     <div class="col-md-6" id="selectedBanner">
 
@@ -59,30 +86,52 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-md-6">
+                <div class="col-md-6">
                         <label for="prodname">Product Name:</label>
-                        <input type="text" class="form-control" name="prodname" value="{{ $data['product']->product_name }}">
+                        
+                        <input id="prodname" type="text" class="form-control @error('prodname') is-invalid @enderror" name="prodname" value="{{ $data['product']->product_name }}" autocomplete="prodname" autofocus>
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodname')<strong>{{ $message }}</strong>@enderror
+                        </span>
                     </div>
                     <div class="col-md-12">
                         <label for="proddescr">Product Description:</label>
-                        <textarea class="form-control" name="proddescr">{{ $data['product']->product_description }} </textarea>
+                        <textarea class="form-control @error('proddescr') is-invalid @enderror" name="proddescr" id="descript"autocomplete="proddescr" autofocus>{{ $data['product']->product_description }} </textarea>
+                        <span class="invalid-feedback" role="alert">
+                        @error('proddescr')<strong>{{ $message }}</strong>@enderror
+                        </span>
                     </div>
                     <div class="col-md-6">
-                        <label for="prodname">Category:</label>
-                        <input type="text" class="form-control"name="prodcate" id="product-category" list="categoryselect" value="{{$data['product']->category}}">
+                        <label for="prodcate">Category:</label>
+                        <input type="text" class="form-control @error('prodcate') is-invalid @enderror" name="prodcate" id="product-category" list="categoryselect" value="{{$data['product']->category}}">
                                 <datalist id="categoryselect">
-                                    @foreach($data['category'] as $item):?>
+                                    @foreach($data['category'] as $item)
                                     <option value="<?=$item['category_id']?>"><?="category-".$item['category_name']?><option>
                                     @endforeach
                                 </datalist>
+                                <span class="invalid-feedback" role="alert">
+                                    @error('prodcate')
+                                        <strong>{{ $message }}</strong>
+                                        @enderror
+                                </span>   
                     </div>
                     <div class="col-md-6">
                         <label for="prodprice">Unit Price:</label>
-                        <input type="number" class="form-control" name="prodprice" value="{{$data['product']->unit_price}}">
+                        <input type="number" class="form-control @error('prodprice') is-invalid @enderror" name="prodprice" value="{{$data['product']->unit_price}}">
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodprice')
+                            <strong>{{ $message }}</strong>
+                            @enderror
+                        </span>   
                     </div>
                     <div class="col-md-6">
                         <label for="prodquan">Product Quantity:</label>
-                        <input type="number" class="form-control" name="prodquan" value="{{$data['product']->available_stock}}">
+                        <input type="number" class="form-control @error('prodquan') is-invalid @enderror" name="prodquan" value="{{$data['product']->stock_available}}">
+                        <span class="invalid-feedback" role="alert">
+                        @error('prodquan')
+                            <strong>{{ $message }}</strong>
+                            @enderror
+                        </span>  
                     </div>
 
                     <div class="col-md-12">

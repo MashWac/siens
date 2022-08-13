@@ -39,13 +39,13 @@
                         <td>{{$item->created_at}}</td>
                         <td>{{$item->updated_at}}</td>
                         <td>
-                            <a href="{{url('view-user/'.$item->id)}}">
+                            <a href="{{url('view-user/'.$item->user_id)}}">
                                 <button type="submit" class="btn btn-success">View</button>
                             </a>
-                            <a href="{{url('edit-user/'.$item->id)}}">
+                            <a href="{{url('edit-user/'.$item->user_id)}}">
                                 <button type="submit" class="btn btn-primary">Edit</button>
                             </a>
-                            <a href="{{url('delete-user/'.$item->id)}}">
+                            <a href="{{url('delete-user/'.$item->user_id)}}">
                                 <button class="btn btn-danger">Delete</button>
                             </a>
                             
