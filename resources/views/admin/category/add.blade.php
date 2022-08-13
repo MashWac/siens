@@ -12,7 +12,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="catename">Category Name:</label>
-                        <input type="text" class="form-control" name="catename">
+                        <input id="catename" type="text" class="form-control @error('catename') is-invalid @enderror" name="catename" value="{{ old('catename') }}" autocomplete="catename" autofocus>
+                        <span class="invalid-feedback" role="alert">
+                        @error('catename')<strong>{{ $message }}</strong>@enderror
+                        </span>
                     </div>
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary">Create</button>
@@ -31,7 +34,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="catename">Category Name:</label>
-                        <input type="text" class="form-control" name="catename" value="{{$data['category']->category_name}}">
+                        <input id="catename" type="text" class="form-control @error('catename') is-invalid @enderror" name="catename" value="{{$data['category']->category_name}}" autocomplete="catename" autofocus>
+                        <span class="invalid-feedback" role="alert">
+                        @error('catename')<strong>{{ $message }}</strong>@enderror
+                        </span>
                     </div>
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-primary">Edit</button>

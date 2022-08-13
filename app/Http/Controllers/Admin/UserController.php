@@ -23,12 +23,21 @@ class UserController extends Controller
     }
     public function insert(Request $request){
         $user=new User();
+        $request->validate([            
+            'firstname' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'max:10','min:10'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'role'=>['exists:App\Models\Role,role_id'] 
+        ]);
 
         $user->firstname=$request->input('firstname');
-        $user->surname=$request->input('lastname');
+        $user->surname=$request->input('surname');
         $user->email=$request->input('email');
         $user->role_as=$request->input('role');
-        $user->password=Hash::make($request->password);
+        $user->telephone=$request->input('phone');
+        $user->country='KENYA';
+        $user->password=Hash::make('user1234');
 
         $user->save();
         return redirect('users')->with('status','User Added Successfully.');
@@ -41,9 +50,16 @@ class UserController extends Controller
         return view('admin.users.add',compact('data'));
     }
     public function update(Request $request,$id){
+        $request->validate([            
+            'firstname' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'max:10','min:9'],
+            'email' => ['required', 'string', 'email', 'max:255',],
+            'role'=>['exists:App\Models\Role,role_id'] 
+        ]);
         $user=User::find($id);
         $user->firstname=$request->input('firstname');
-        $user->surname=$request->input('lastname');
+        $user->surname=$request->input('surname');
         $user->email=$request->input('email');
         $user->role_as=$request->input('role');
 
@@ -52,7 +68,8 @@ class UserController extends Controller
     }
     public function delete(Request $request,$id){
         $user=User::find($id);
-        $user->delete();
+        $user->is_deleted=1;
+        $user->update();
         return redirect('users')->with('status','User Deleted Successfully.');
     }
     

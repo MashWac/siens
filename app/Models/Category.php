@@ -10,5 +10,5 @@ class Category extends Model
     use HasFactory;
     protected $table='tbl_categories';
     protected $primaryKey='category_id';
-    protected $fillable=['category_name','popularity', 'created_at','updated_at','is_deleted'];
+    protected $fillable=['category_name','category_banner','popularity', 'created_at','updated_at','is_deleted'];
 }

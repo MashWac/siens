@@ -20,7 +20,7 @@
                     <img src="/staticimg/product8.jpg" class="d-block w-100" height="50%"alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <p class="proddesc">REJUVINATE AND ENHANCE VITAL MINERALS.</p>
-                        <a href="{{url('prodpage')}}" class="btn btn-warning "id="btnpurch" style="color:white;"> View Products</a>
+                        <a href="{{url('prodpage')}}" class="btn btn-warning "id="btnpurch" style="color:white;"> View Product</a>
                     </div>
                     </div>
                     <div class="carousel-item">

@@ -20,11 +20,7 @@
                     PRODUCTS
                 </li>
                 </a>
-                <a class="navlinks" href="{{ url('/shipping') }}">
-                <li class="navopts">
-                    SHIPPING                   
-                </li>
-                </a> 
+    
                 <a class="navlinks" href="{{ url('/contacts') }}">
                 <li class="navopts"> 
                     CONTACT US
@@ -35,11 +31,40 @@
                     ABOUT US
                 </li>
                 </a> 
+                <a class="navlinks" href="">
+                <a class="navlinks" href="{{ url('cart') }}">
+                <li class="navopts"> 
+                <span id="cartdetails">Cart<ion-icon name="cart" size="medium"></ion-icon></span>
+                    <?php if(Session::has('cart')){
+                    $count=count(session('cart'));
+                    echo"<span id=cartCount>$count</span>";
+                    }else
+                    echo"<span id=cartCount>0</span>"
+                    ?>
+                </li>
+                </a>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ms-auto">
+                <?php if(session('logged')):?>
+                <!-- Authentication Links -->
+                    <li class="nav-item navlinks dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Oxygen', sans-serif; font-size:17px; text-transform: capitalize;" v-pre>
+                            <ion-icon size="large" name="contact" style="  vertical-align: middle;"></ion-icon>
+                             {{ session('surname') }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('profile')}}">
+                                {{ __('View Profile') }}
+                            </a>
+                            <a class="dropdown-item" href="{{url('logout')}}">
+                                {{ __('Logout') }}
+                            </a>
+                        </div>
+                    </li>
+                    <?php endif;?>
+            </ul>
             </div>
         </div>
     </nav>

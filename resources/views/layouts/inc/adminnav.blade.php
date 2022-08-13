@@ -16,21 +16,36 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Account</span>
+                        <?php if(session('logged')):?>
+                        <!-- Authentication Links -->
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" >
+                                    <ion-icon size="large" name="contact" style="  vertical-align: middle;"></ion-icon>
+                                    {{ session('surname') }}
                                 </a>
+
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <li class="nav-link"><a href="{{url('organiserprofile')}}" class="nav-item dropdown-item">Profile</a></li>
+                                    <li class="dropdown-divider"></li>
+                                    <li class="nav-link"><a href="{{url('logout')}}" class="nav-item dropdown-item">Log out</a></li>
+                                    </ul>
+                                </li>
+                                <li class="separator d-lg-none"></li>
+                            </li>
+                            <?php endif;?>
+                            <li class="nav-item">
+                
                             </li>
 
                             <li class="nav-item">
                            
-                                <a class="nav-link" href="{{ route('logout') }}"
+                                <a class="nav-link" href="{{ url('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ url('logout') }}" method="GET" class="d-none">
                                         @csrf
                                     </form>
                             </li>
